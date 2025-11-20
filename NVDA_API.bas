@@ -1,4 +1,3 @@
-Attribute VB_Name = "NVDA_API"
 Option Explicit
 
 ' Place your Alpha Vantage API key here
@@ -43,9 +42,9 @@ Private Function ParsePriceFromJson(jsonText As String) As Double
     pos = InStr(1, jsonText, key, vbTextCompare)
 
     If pos > 0 Then
-        startPos = InStr(pos + Len(key), jsonText, """)
+        startPos = InStr(pos + Len(key), jsonText, Chr$(34))
         If startPos > 0 Then
-            endPos = InStr(startPos + 1, jsonText, """)
+            endPos = InStr(startPos + 1, jsonText, Chr$(34))
             If endPos > startPos Then
                 rawValue = Mid$(jsonText, startPos + 1, endPos - startPos - 1)
                 decimalSep = Application.International(xlDecimalSeparator)
