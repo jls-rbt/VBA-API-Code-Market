@@ -21,7 +21,11 @@ Public Sub RecupCoursNVDA()
         price = ParsePriceFromJson(responseText)
 
         If price > 0 Then
-            ThisWorkbook.ActiveSheet.Range("C3").Value = price
+            With ThisWorkbook.ActiveSheet
+                .Range("C3").Value = price
+                .Range("D3").Value = Now
+                .Range("D3").NumberFormat = "dd/mm/yyyy hh:mm:ss"
+            End With
         Else
             MsgBox "Impossible d'extraire le prix dans la réponse JSON.", vbExclamation
         End If
