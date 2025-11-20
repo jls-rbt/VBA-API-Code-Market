@@ -43,9 +43,9 @@ Private Function ParsePriceFromJson(jsonText As String) As Double
     pos = InStr(1, jsonText, key, vbTextCompare)
 
     If pos > 0 Then
-        startPos = InStr(pos + Len(key), jsonText, "\"")
+        startPos = InStr(pos + Len(key), jsonText, """)
         If startPos > 0 Then
-            endPos = InStr(startPos + 1, jsonText, "\"")
+            endPos = InStr(startPos + 1, jsonText, """)
             If endPos > startPos Then
                 rawValue = Mid$(jsonText, startPos + 1, endPos - startPos - 1)
                 decimalSep = Application.International(xlDecimalSeparator)
